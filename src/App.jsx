@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import { ErrorPage } from './Components/ErrorPage/ErrorPage';
-
 import { MainPage } from './Components/MainPage/MainPage';
 import { fetchNavigation } from './features/navigationSlice';
 import { Root } from './routes/Root';
