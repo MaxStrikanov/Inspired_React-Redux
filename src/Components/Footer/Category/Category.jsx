@@ -1,47 +1,35 @@
 import style from './../../Footer/Footer.module.scss'
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const list = [
-	{
-		link: 'women', title: 'Женщины', categories: [
-			{ link: 'bras', title: 'Бюстгальтеры' },
-			{ link: 'panties', title: 'Трусы' },
-			{ link: 'socks', title: 'Носки' },
-			{ link: 'bathrobes', title: 'Халаты' },
-			{ link: 'thermal', title: 'Термобелье' },
-			{ link: 'pijams', title: 'Пижамы' }
-		]
-	},
-	{
-		link: 'men', title: 'Мужчины', categories: [
-			{ link: 'panties', title: 'Трусы' },
-			{ link: 'socks', title: 'Носки' },
-			{ link: 'bathrobes', title: 'Халаты' },
-			{ link: 'thermal', title: 'Термобелье' }
-		]
-	}
-]
+export const Category = () => {
+	const { activeGender, genderList, categories } = useSelector(state => state.navigation);
 
-export const Category = () => (
-	<div className={style.category}>
-		<h2 className={cn(style.title, style.categoryTitle)}></h2>
+	return (
+		<div className={style.category}>
+			<h2 className={cn(style.title, style.categoryTitle)}></h2>
 
-		<ul className={style.categoryList}>
-			{list.map((item) => (
-				<li key={item.link} className={style.categoryItem}>
-					<h3 className={style.categorySubtitle}>
-						<NavLink to={item.link} className={style.link} >{item.title}</NavLink>
-					</h3>
-					<ul className={style.categorySublist}>
-						{item.categories.map(category => (
-							<li key={category.link}>
-								<NavLink className={style.link} to={`${item.link}/${category.link}`}>{category.title}</NavLink>
-							</li>
-						))}
-					</ul>
-				</li>
-			))}
-		</ul>
-	</div>
-)
+			<ul className={style.categoryList}>
+				{genderList.map((gender) => (
+					
+					<li key={gender} className={style.categoryItem}>
+						<h3 className={style.categorySubtitle}>
+							<NavLink to={`/catalog/${gender}`} className={style.link} >{categories[gender].title}</NavLink>
+						</h3>
+						
+						<ul className={style.categorySublist}>
+							{categories[gender]?.list?.map((item) => (
+								<li key={item.slug}>
+									<NavLink className={style.link} to={`/catalog/${activeGender}/${item.slug}`}>{item.title}</NavLink>
+								</li>
+							))}
+						</ul>
+					</li>
+				))}
+			</ul>
+		</div>
+	)
+	
+}
+

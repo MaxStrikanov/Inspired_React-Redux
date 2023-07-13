@@ -22,6 +22,5 @@ export const Navigation = () => {
 				<Category  />
 			</Container>
 		</nav>
-	)
-	
+	)	
 }

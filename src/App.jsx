@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import { ErrorPage } from './Components/ErrorPage/ErrorPage';
 import { MainPage } from './Components/MainPage/MainPage';
+import { fetchColor } from './features/colorSlice';
 import { fetchNavigation } from './features/navigationSlice';
 import { Root } from './routes/Root';
 
@@ -10,10 +11,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Root />} >
       <Route index element={<MainPage />} />
-      <Route path='women' element={<MainPage gender='women' />} />
-      <Route path='men' element={<MainPage gender='men' />} />
-      <Route path='women/:category' element={<MainPage gender='women' />} />
-      <Route path='men/:category' element={<MainPage gender='men' />} />
+      <Route path='catalog/:gender/:category' element={<MainPage/>} />
+      
       <Route path='*' element={<ErrorPage />}/>
     </Route>
   )
@@ -24,6 +23,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchNavigation());
+    dispatch(fetchColor())
   }, [dispatch]);
 
   return (
