@@ -15,13 +15,23 @@ export const Category = () => {
 					
 					<li key={gender} className={style.categoryItem}>
 						<h3 className={style.categorySubtitle}>
-							<NavLink to={`/catalog/${gender}`} className={style.link} >{categories[gender].title}</NavLink>
+							<NavLink 
+								to={`/catalog/${gender}`} 
+								className={style.link} 
+							>
+								{categories[gender].title}
+							</NavLink>
 						</h3>
 						
 						<ul className={style.categorySublist}>
-							{categories[gender]?.list?.map((item) => (
+							{categories[gender].list.map((item) => (
 								<li key={item.slug}>
-									<NavLink className={style.link} to={`/catalog/${activeGender}/${item.slug}`}>{item.title}</NavLink>
+									<NavLink 
+										className={style.link} 
+										to={`/catalog/${activeGender}/${item.slug}`}
+									>
+										{item.title}
+									</NavLink>
 								</li>
 							))}
 						</ul>

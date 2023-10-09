@@ -12,7 +12,9 @@ export const Gender = () => {
 		<ul className={style.gender}>
 			{genderList.map((gender) => (
 				<li key={gender} className={style.item}>
-					<NavLink to={`/catalog/${gender}`} className={({ isActive }) => cn(style.link, (isActive || gender === activeGender) && style.linkActive)}>{categories[gender].title}</NavLink>
+					<NavLink 
+						to={`/catalog/${gender}`} 
+						className={({ isActive }) => cn(style.link, (isActive || gender === activeGender) && style.linkActive)}>{categories[gender].title}</NavLink>
 				</li>
 			))}
 		</ul>
