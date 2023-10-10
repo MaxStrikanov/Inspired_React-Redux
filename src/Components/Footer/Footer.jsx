@@ -91,14 +91,14 @@ export const Footer = () => {
             <ul className={s.developmentList}>
               <li className={s.developmentItem}>
                 Designer:
-                <a className={s.link} href="https://t.me/Mrshmallowww">
-                  Anastasia Ilina
+                <a className={s.link} href="https://t.me/">
+                  Elena Masova
                 </a>
               </li>
               <li className={s.developmentItem}>
                 Developer:
-                <a className={s.link} href="https://t.me/Quper">
-                  Maksim Leskin
+                <a className={s.link} href="https://t.me/maxbrutall">
+                  Maksim Strikanov
                 </a>
               </li>
             </ul>
