@@ -1,10 +1,12 @@
-import { Navigation } from './Navigation/Navigation';
-import { Top } from './Top/Top';
-import style from './../Header/Header.module.scss'
+import { Navigation } from './Navigation/Navigation.jsx';
+import { Top } from './Top/Top.jsx';
+import s from './Header.module.scss';
+import { Search } from '../Search/Search.jsx';
 
 export const Header = () => (
-	<header className={style.header}>
-		<Top />
-		<Navigation />
-	</header>
+  <header className={s.header}>
+    <Top/>
+    <Search />
+    <Navigation />
+  </header>
 )

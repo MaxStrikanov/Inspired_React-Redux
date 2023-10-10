@@ -1,35 +1,35 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { COLOR_URL } from '../const';
+import { COLORS_URL } from '../const.js';
 
-export const fetchColor = createAsyncThunk(
-	'color/fetchColor',
-	async () => {
-		const responce = await fetch(COLOR_URL)
-		return  await responce.json()
-	}
+export const fetchColors = createAsyncThunk(
+  'color/fetchColors',
+  async () => {
+    const response = await fetch(COLORS_URL);
+    return await response.json();
+  }
 )
 
-export const colorSlice = createSlice({
-	name: 'color',
-	initialState: {
-		status: 'idle',
-		colorList: [],
-		error: null,
-	},
-	extraReducers: builder => {
-		builder
-		.addCase(fetchColor.pending, (state) => {
-			state.status = 'loading'
-		})
-		.addCase(fetchColor.fulfilled, (state, action) => {
-			state.status = 'success';
-			state.colorList = action.payload;
-		})
-		.addCase(fetchColor.rejected, (state, action) => {
-			state.status = 'failed';
-			state.error = action.error.message
-		});
-	}
-})
+const colorSlice = createSlice({
+  name: 'color',
+  initialState: {
+    status: 'idle',
+    colorList: [],
+    error: null,
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchColors.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchColors.fulfilled, (state, action) => {
+        state.status = 'success';
+        state.colorList = action.payload;
+      })
+      .addCase(fetchColors.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+  }
+});
 
-export default colorSlice.reducer
+export default colorSlice.reducer;

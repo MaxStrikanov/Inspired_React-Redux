@@ -1,16 +1,20 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import navigationReducer from './features/navigationSlice';
-import colorReducer from './features/colorSlice';
-import goodsReducer from './features/goodsSlice'
-import productReducer from './features/productSlice'
-import favoritesSlice from './features/favoritesSlice';
+import { combineReducers } from "@reduxjs/toolkit";
+import navigation from "./features/navigationSlice.js";
+import color from "./features/colorSlice.js";
+import goods from "./features/goodsSlice.js";
+import product from "./features/productSlice.js";
+import favorites from "./features/favoritesSlice.js";
+import cart from "./features/cartSlice.js";
+import search from "./features/searchSlice.js";
+import statusServer from "./features/statusServerSlice.js";
 
-const rootReducer = combineReducers({
-	navigation: navigationReducer,
-	color: colorReducer,
-	goods: goodsReducer,
-	product: productReducer,
-	favorites: favoritesSlice
-})
-
-export default rootReducer;
+export const rootReducer = combineReducers({
+  navigation,
+  color,
+  goods,
+  product,
+  favorites,
+  cart,
+  search,
+  statusServer,
+});
